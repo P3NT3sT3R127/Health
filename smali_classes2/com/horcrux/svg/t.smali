@@ -1,0 +1,470 @@
+.class Lcom/horcrux/svg/t;
+.super Lcom/horcrux/svg/j;
+.source ""
+
+
+# static fields
+.field private static final v:[F
+
+
+# instance fields
+.field private d:Lcom/horcrux/svg/SVGLength;
+
+.field private f:Lcom/horcrux/svg/SVGLength;
+
+.field private g:Lcom/horcrux/svg/SVGLength;
+
+.field private l:Lcom/horcrux/svg/SVGLength;
+
+.field private m:Lcom/horcrux/svg/Brush$BrushUnits;
+
+.field private n:Lcom/horcrux/svg/Brush$BrushUnits;
+
+.field private o:F
+
+.field private p:F
+
+.field private q:F
+
+.field private r:F
+
+.field s:Ljava/lang/String;
+
+.field t:I
+
+.field private u:Landroid/graphics/Matrix;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    const/16 v0, 0x9
+
+    new-array v0, v0, [F
+
+    fill-array-data v0, :array_0
+
+    sput-object v0, Lcom/horcrux/svg/t;->v:[F
+
+    return-void
+
+    :array_0
+    .array-data 4
+        0x3f800000    # 1.0f
+        0x0
+        0x0
+        0x0
+        0x3f800000    # 1.0f
+        0x0
+        0x0
+        0x0
+        0x3f800000    # 1.0f
+    .end array-data
+.end method
+
+.method public constructor <init>(Lcom/facebook/react/bridge/ReactContext;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Lcom/horcrux/svg/j;-><init>(Lcom/facebook/react/bridge/ReactContext;)V
+
+    const/4 p1, 0x0
+
+    iput-object p1, p0, Lcom/horcrux/svg/t;->u:Landroid/graphics/Matrix;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method getViewBox()Landroid/graphics/RectF;
+    .locals 7
+
+    new-instance v0, Landroid/graphics/RectF;
+
+    iget v1, p0, Lcom/horcrux/svg/t;->o:F
+
+    iget v2, p0, Lcom/horcrux/svg/VirtualView;->mScale:F
+
+    mul-float v3, v1, v2
+
+    iget v4, p0, Lcom/horcrux/svg/t;->p:F
+
+    mul-float v5, v4, v2
+
+    iget v6, p0, Lcom/horcrux/svg/t;->q:F
+
+    add-float/2addr v1, v6
+
+    mul-float/2addr v1, v2
+
+    iget v6, p0, Lcom/horcrux/svg/t;->r:F
+
+    add-float/2addr v4, v6
+
+    mul-float/2addr v4, v2
+
+    invoke-direct {v0, v3, v5, v1, v4}, Landroid/graphics/RectF;-><init>(FFFF)V
+
+    return-object v0
+.end method
+
+.method saveDefinition()V
+    .locals 4
+
+    iget-object v0, p0, Lcom/horcrux/svg/VirtualView;->mName:Ljava/lang/String;
+
+    if-eqz v0, :cond_3
+
+    const/4 v0, 0x4
+
+    new-array v0, v0, [Lcom/horcrux/svg/SVGLength;
+
+    const/4 v1, 0x0
+
+    iget-object v2, p0, Lcom/horcrux/svg/t;->d:Lcom/horcrux/svg/SVGLength;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x1
+
+    iget-object v2, p0, Lcom/horcrux/svg/t;->f:Lcom/horcrux/svg/SVGLength;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x2
+
+    iget-object v2, p0, Lcom/horcrux/svg/t;->g:Lcom/horcrux/svg/SVGLength;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x3
+
+    iget-object v2, p0, Lcom/horcrux/svg/t;->l:Lcom/horcrux/svg/SVGLength;
+
+    aput-object v2, v0, v1
+
+    new-instance v1, Lcom/horcrux/svg/Brush;
+
+    sget-object v2, Lcom/horcrux/svg/Brush$BrushType;->PATTERN:Lcom/horcrux/svg/Brush$BrushType;
+
+    iget-object v3, p0, Lcom/horcrux/svg/t;->m:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    invoke-direct {v1, v2, v0, v3}, Lcom/horcrux/svg/Brush;-><init>(Lcom/horcrux/svg/Brush$BrushType;[Lcom/horcrux/svg/SVGLength;Lcom/horcrux/svg/Brush$BrushUnits;)V
+
+    iget-object v0, p0, Lcom/horcrux/svg/t;->n:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    invoke-virtual {v1, v0}, Lcom/horcrux/svg/Brush;->d(Lcom/horcrux/svg/Brush$BrushUnits;)V
+
+    invoke-virtual {v1, p0}, Lcom/horcrux/svg/Brush;->g(Lcom/horcrux/svg/t;)V
+
+    iget-object v0, p0, Lcom/horcrux/svg/t;->u:Landroid/graphics/Matrix;
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v1, v0}, Lcom/horcrux/svg/Brush;->f(Landroid/graphics/Matrix;)V
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->getSvgView()Lcom/horcrux/svg/SvgView;
+
+    move-result-object v0
+
+    iget-object v2, p0, Lcom/horcrux/svg/t;->m:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    sget-object v3, Lcom/horcrux/svg/Brush$BrushUnits;->USER_SPACE_ON_USE:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    if-eq v2, v3, :cond_1
+
+    iget-object v2, p0, Lcom/horcrux/svg/t;->n:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    if-ne v2, v3, :cond_2
+
+    :cond_1
+    invoke-virtual {v0}, Lcom/horcrux/svg/SvgView;->getCanvasBounds()Landroid/graphics/Rect;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Lcom/horcrux/svg/Brush;->h(Landroid/graphics/Rect;)V
+
+    :cond_2
+    iget-object v2, p0, Lcom/horcrux/svg/VirtualView;->mName:Ljava/lang/String;
+
+    invoke-virtual {v0, v1, v2}, Lcom/horcrux/svg/SvgView;->defineBrush(Lcom/horcrux/svg/Brush;Ljava/lang/String;)V
+
+    :cond_3
+    return-void
+.end method
+
+.method public setAlign(Ljava/lang/String;)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "align"
+    .end annotation
+
+    iput-object p1, p0, Lcom/horcrux/svg/t;->s:Ljava/lang/String;
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setHeight(Lcom/facebook/react/bridge/Dynamic;)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "height"
+    .end annotation
+
+    invoke-static {p1}, Lcom/horcrux/svg/SVGLength;->b(Lcom/facebook/react/bridge/Dynamic;)Lcom/horcrux/svg/SVGLength;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/horcrux/svg/t;->l:Lcom/horcrux/svg/SVGLength;
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setMeetOrSlice(I)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "meetOrSlice"
+    .end annotation
+
+    iput p1, p0, Lcom/horcrux/svg/t;->t:I
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setMinX(F)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "minX"
+    .end annotation
+
+    iput p1, p0, Lcom/horcrux/svg/t;->o:F
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setMinY(F)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "minY"
+    .end annotation
+
+    iput p1, p0, Lcom/horcrux/svg/t;->p:F
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setPatternContentUnits(I)V
+    .locals 1
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "patternContentUnits"
+    .end annotation
+
+    if-eqz p1, :cond_1
+
+    const/4 v0, 0x1
+
+    if-eq p1, v0, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    sget-object p1, Lcom/horcrux/svg/Brush$BrushUnits;->USER_SPACE_ON_USE:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    goto :goto_0
+
+    :cond_1
+    sget-object p1, Lcom/horcrux/svg/Brush$BrushUnits;->OBJECT_BOUNDING_BOX:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    :goto_0
+    iput-object p1, p0, Lcom/horcrux/svg/t;->n:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    :goto_1
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setPatternTransform(Lcom/facebook/react/bridge/ReadableArray;)V
+    .locals 2
+    .param p1    # Lcom/facebook/react/bridge/ReadableArray;
+        .annotation runtime Ljavax/annotation/Nullable;
+        .end annotation
+    .end param
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "patternTransform"
+    .end annotation
+
+    if-eqz p1, :cond_2
+
+    sget-object v0, Lcom/horcrux/svg/t;->v:[F
+
+    iget v1, p0, Lcom/horcrux/svg/VirtualView;->mScale:F
+
+    invoke-static {p1, v0, v1}, Lcom/horcrux/svg/v;->c(Lcom/facebook/react/bridge/ReadableArray;[FF)I
+
+    move-result p1
+
+    const/4 v1, 0x6
+
+    if-ne p1, v1, :cond_1
+
+    iget-object p1, p0, Lcom/horcrux/svg/t;->u:Landroid/graphics/Matrix;
+
+    if-nez p1, :cond_0
+
+    new-instance p1, Landroid/graphics/Matrix;
+
+    invoke-direct {p1}, Landroid/graphics/Matrix;-><init>()V
+
+    iput-object p1, p0, Lcom/horcrux/svg/t;->u:Landroid/graphics/Matrix;
+
+    :cond_0
+    iget-object p1, p0, Lcom/horcrux/svg/t;->u:Landroid/graphics/Matrix;
+
+    invoke-virtual {p1, v0}, Landroid/graphics/Matrix;->setValues([F)V
+
+    goto :goto_0
+
+    :cond_1
+    const/4 v0, -0x1
+
+    if-eq p1, v0, :cond_3
+
+    const-string p1, "ReactNative"
+
+    const-string v0, "RNSVG: Transform matrices must be of size 6"
+
+    invoke-static {p1, v0}, Lw2/a;->K(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto :goto_0
+
+    :cond_2
+    const/4 p1, 0x0
+
+    iput-object p1, p0, Lcom/horcrux/svg/t;->u:Landroid/graphics/Matrix;
+
+    :cond_3
+    :goto_0
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setPatternUnits(I)V
+    .locals 1
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "patternUnits"
+    .end annotation
+
+    if-eqz p1, :cond_1
+
+    const/4 v0, 0x1
+
+    if-eq p1, v0, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    sget-object p1, Lcom/horcrux/svg/Brush$BrushUnits;->USER_SPACE_ON_USE:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    goto :goto_0
+
+    :cond_1
+    sget-object p1, Lcom/horcrux/svg/Brush$BrushUnits;->OBJECT_BOUNDING_BOX:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    :goto_0
+    iput-object p1, p0, Lcom/horcrux/svg/t;->m:Lcom/horcrux/svg/Brush$BrushUnits;
+
+    :goto_1
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setVbHeight(F)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "vbHeight"
+    .end annotation
+
+    iput p1, p0, Lcom/horcrux/svg/t;->r:F
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setVbWidth(F)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "vbWidth"
+    .end annotation
+
+    iput p1, p0, Lcom/horcrux/svg/t;->q:F
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setWidth(Lcom/facebook/react/bridge/Dynamic;)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "width"
+    .end annotation
+
+    invoke-static {p1}, Lcom/horcrux/svg/SVGLength;->b(Lcom/facebook/react/bridge/Dynamic;)Lcom/horcrux/svg/SVGLength;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/horcrux/svg/t;->g:Lcom/horcrux/svg/SVGLength;
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setX(Lcom/facebook/react/bridge/Dynamic;)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "x"
+    .end annotation
+
+    invoke-static {p1}, Lcom/horcrux/svg/SVGLength;->b(Lcom/facebook/react/bridge/Dynamic;)Lcom/horcrux/svg/SVGLength;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/horcrux/svg/t;->d:Lcom/horcrux/svg/SVGLength;
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
+
+.method public setY(Lcom/facebook/react/bridge/Dynamic;)V
+    .locals 0
+    .annotation runtime Lcom/facebook/react/uimanager/annotations/ReactProp;
+        name = "y"
+    .end annotation
+
+    invoke-static {p1}, Lcom/horcrux/svg/SVGLength;->b(Lcom/facebook/react/bridge/Dynamic;)Lcom/horcrux/svg/SVGLength;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/horcrux/svg/t;->f:Lcom/horcrux/svg/SVGLength;
+
+    invoke-virtual {p0}, Lcom/horcrux/svg/VirtualView;->invalidate()V
+
+    return-void
+.end method
